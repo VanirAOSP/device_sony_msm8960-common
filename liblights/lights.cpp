@@ -266,8 +266,6 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	g = (state->color >> 8) & 0xFF;
 	b = (state->color) & 0xFF;
 
-	}
-
 	write_int (RED1_LED_FILE, r);
 	write_int (RED2_LED_FILE, r);
 	write_int (RED3_LED_FILE, r);
