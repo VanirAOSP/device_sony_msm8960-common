@@ -5,9 +5,6 @@ ifneq ($(strip $(TARGET_DISPLAY_GAMMA_DISABLED)),true)
     LOCAL_CFLAGS += -DENABLE_GAMMA_CORRECTION
 endif
 
-LOCAL_C_INCLUDES := \
-    device/sony/huashan/include
-
 LOCAL_SRC_FILES := \
     lights.cpp
 
