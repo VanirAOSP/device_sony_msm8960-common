@@ -342,7 +342,7 @@ static int close_lights (struct light_device_t *dev) {
 }
 
 static int open_lights(const hw_module_t* module, const char* name,
-		       struct hw_device_t** device)
+						struct hw_device_t** device) {
 {
     int rv = 0;
     int (*set_light)(struct light_device_t* dev,
@@ -388,7 +388,7 @@ static int open_lights(const hw_module_t* module, const char* name,
             return -EINVAL;
 
 		pthread_once (&g_init, init_globals);
-		struct light_device_t* dev = (struct light_device_t*) malloc(sizeof (struct light_device_t));
+		struct light_device_t *dev = malloc(sizeof (struct light_device_t));
 		memset(dev, 0, sizeof(*dev));
 		
 		dev->common.tag 	= HARDWARE_DEVICE_TAG;
