@@ -60,22 +60,6 @@ static int lights_device_close(hw_device_t* device);
 static int lights_set_light(struct light_device_t* dev,
                             struct light_state_t const* state);
 
-struct hw_module_methods_t lights_module_methods = {
-    open: open_lights,
-};
-
-hw_module_t HAL_MODULE_INFO_SYM = {
-    tag: HARDWARE_MODULE_TAG,
-    version_major: 1,
-    version_minor: 0,
-    id: LIGHTS_HARDWARE_MODULE_ID,
-    name: "Xperia Lights Wrapper",
-    author: "The CyanogenMod Project",
-    methods: &lights_module_methods,
-    dso: NULL,
-    reserved: {0},
-};
-
 typedef struct wrapper_light_device {
     light_device_t base;
     light_device_t *vendor;
@@ -342,7 +326,7 @@ static int close_lights (struct light_device_t *dev) {
 }
 
 static int open_lights(const hw_module_t* module, const char* name,
-						struct hw_device_t** device) {
+		       struct hw_device_t** device)
 {
     int rv = 0;
     int (*set_light)(struct light_device_t* dev,
@@ -388,7 +372,7 @@ static int open_lights(const hw_module_t* module, const char* name,
             return -EINVAL;
 
 		pthread_once (&g_init, init_globals);
-		struct light_device_t *dev = malloc(sizeof (struct light_device_t));
+		struct light_device_t* dev = (struct light_device_t*) malloc(sizeof (struct light_device_t));
 		memset(dev, 0, sizeof(*dev));
 		
 		dev->common.tag 	= HARDWARE_DEVICE_TAG;
