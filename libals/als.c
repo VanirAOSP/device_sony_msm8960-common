@@ -114,10 +114,12 @@ als_enable(void)
 {
     ALOGV("als_enable");
     int err = 0;
-    err |= write_enable(AS3677_ALS_ENABLE_FILE, 1);
     err |= write_enable(AS3677_ALS_LCD1_GROUP_FILE, 1);
     err |= write_enable(AS3677_ALS_LCD2_GROUP_FILE, 1);
     err |= write_string(AS3677_ALS_GROUP1_FILE, ALS_LCD_LEVELS_GROUP1);
+    err |= write_enable(AS3677_ALS_ENABLE_FILE, 1);
+    if (err)
+        als_disable();
     return err;
 }
 
@@ -178,6 +180,5 @@ int
 als_getlux_filtered(float* data)
 {
     ALOGV("als_getlux_filtered : %f", *data);
-    *data = 1;
     return als_getlux(data);
 }
