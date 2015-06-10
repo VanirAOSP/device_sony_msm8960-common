@@ -32,10 +32,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
-# Lights wrapper
+# Huashan LibLights
 PRODUCT_PACKAGES += \
-    lights.msm8960 \
-    libals
+    lights.msm8960
 
 # Media profile
 PRODUCT_COPY_FILES += \

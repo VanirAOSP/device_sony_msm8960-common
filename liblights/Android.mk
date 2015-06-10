@@ -1,9 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-ifneq ($(strip $(TARGET_DISPLAY_GAMMA_DISABLED)),true)
-    LOCAL_CFLAGS += -DENABLE_GAMMA_CORRECTION
-endif
 LOCAL_C_INCLUDES := device/sony/huashan/include
 LOCAL_SRC_FILES := lights.c
 LOCAL_SHARED_LIBRARIES := liblog
